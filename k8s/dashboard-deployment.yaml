@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-dashboard
+  template:
+    metadata:
+      labels:
+        app: ai-dashboard
+    spec:
+      containers:
+        - name: dashboard
+          image: ai-user-dashboard:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8501
